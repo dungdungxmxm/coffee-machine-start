@@ -28,6 +28,7 @@ coins = {"quarters": 0.25, "dimes": 0.10, "nickles": 0.05, "pennies": 0.01}
 
 
 def check_sufficient(drink):
+    """Return true when order can be made, False if ingredients are insufficient."""
     for item in resources:
         if resources[item] < drink[item] and item != 'Money':
             return False
@@ -35,12 +36,14 @@ def check_sufficient(drink):
 
 
 def calculate_money(quarters, dimes, nickles, pennies):
+    """Return total of money from coins inserted"""
     total = quarters * coins["quarters"] + dimes * coins["dimes"] + nickles * coins["nickles"] \
             + pennies * coins["pennies"]
     return total
 
 
 def change_resource(drink):
+    """Return changed resources"""
     resources["Water"] = resources["Water"] - drink["Water"]
     resources["Milk"] = resources["Milk"] - drink["Milk"]
     resources["Coffee"] = resources["Coffee"] - drink["Coffee"]
@@ -48,6 +51,7 @@ def change_resource(drink):
 
 
 def get_resource():
+    """Return the information of resources"""
     water = resources["Water"]
     milk = resources["Milk"]
     coffee = resources["Coffee"]
